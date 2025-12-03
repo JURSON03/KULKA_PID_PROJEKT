@@ -163,7 +163,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-+  HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -192,7 +192,7 @@ int main(void)
   HAL_TIM_IC_Start(&htim3, TIM_CHANNEL_2);		// Odczytywanie zbocza opadającego z Echo
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);		// Sygnał Trig do czujnika
 
-  HAL_TIM_Base_Start_IT(&htim1);				// stałe próbkowanie 100 ms
+  HAL_TIM_Base_Start_IT(&htim1);				// stałe próbkowanie 25 Hz
 
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);   	// SYGNAL PWM DO STEROWANIA SERWO zakres PWM max. (350 - 1000)
 
@@ -211,22 +211,13 @@ int main(void)
   {
 
 
-	  float pid_value = distance; // Twoja wartość float
+	  float pid_value = distance;
 
-	  		// 1. Wyciągamy część całkowitą
 	  		int val_int = (int)pid_value;
-
-	  		// 2. Wyciągamy 2 miejsca po przecinku
-	  		// (Odejmujemy całość, mnożymy *100 i ucinamy resztę)
 	  		int val_frac = (int)((pid_value - val_int) * 100);
-
-	  		// Zabezpieczenie: jeśli liczba ujemna, ułamek musi być dodatni do wyświetlenia
 	  		if (val_frac < 0) val_frac *= -1;
 
-	  		char buffer[20]; // Troszkę większy bufor dla bezpieczeństwa
-
-	  		// 3. Formatujemy jako "Calkowita . Ulamkowa"
-	  		// %02d oznacza: wypisz inta, a jak ma jedną cyfrę, to dodaj zero na początku (np. .05 zamiast .5)
+	  		char buffer[20];
 	  		int len = sprintf(buffer, "%d.%02d\r\n", val_int, val_frac);
 
 	  		HAL_UART_Transmit(&huart3, (uint8_t*)buffer, len, 100);

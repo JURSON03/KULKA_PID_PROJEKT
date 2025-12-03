@@ -12,9 +12,9 @@
 #include "SG90.h"
 #include "HCSR04.h"
 
-#define Tp 0.1			// próbkowanie
+#define Tp 0.04			// próbkowanie
 #define PWM_OFFSET 500	// OFF_SET dla którego belka jest prosto, niepochylona (dla serwa 0 stopni)
-#define RAD_TO_PWM 400
+#define RAD_TO_PWM 477
 
 #define radianMin -0,523
 #define radianMax 0,523
@@ -48,6 +48,8 @@ typedef struct {
 	float error;		  // blad
 	float prev_error;     // Poprzedni błąd (do obliczenia różniczki)
 	float prev_derivative_output;	// poprzednia wartosc rozniczki
+
+	float integral_sum;
 
 	float PID_p;
 	float PID_i;

@@ -1,2 +1,2 @@
 ../Core/Components/Src/PID.c:12:6:PID_Controller_Init	16	static
-../Core/Components/Src/PID.c:66:6:PID_Controller_Calculate	24	static
+../Core/Components/Src/PID.c:62:6:PID_Controller_Calculate	32	static

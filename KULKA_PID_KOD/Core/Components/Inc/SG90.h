@@ -12,7 +12,7 @@
 
 
 #define SG90_PWM_MIN 350
-#define SG90_PWM_MAX 1100
+#define SG90_PWM_MAX 1000
 
 typedef struct {
 
