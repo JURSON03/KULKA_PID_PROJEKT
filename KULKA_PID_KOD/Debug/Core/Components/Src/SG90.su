@@ -1,0 +1,2 @@
+../Core/Components/Src/SG90.c:11:6:SG90_Init	24	static
+../Core/Components/Src/SG90.c:24:6:SG90_Set_Angle	16	static

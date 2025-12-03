@@ -1,0 +1,2 @@
+../Core/Components/Src/HCSR04.c:13:6:HCSR04_Init	1
+../Core/Components/Src/HCSR04.c:41:7:HCSR04_Get_Distance	4
