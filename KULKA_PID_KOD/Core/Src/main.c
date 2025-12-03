@@ -123,9 +123,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 		PID_Controller_Calculate(&HCSR04_Sensor, &SG90_Servo, &PID_Controller);
 
-	//	SG90_Set_Angle(&SG90_Servo);
+		SG90_Set_Angle(&SG90_Servo);
 
-	//	PID_Sygnal = PID_Controller.PID_total;
+		PID_Sygnal = PID_Controller.PID_total;
 
 	}
 }
@@ -163,7 +163,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
++  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -209,25 +209,6 @@ int main(void)
 
   while (1)
   {
-
-
-
-	  __HAL_TIM_SET_COMPARE( &htim4, TIM_CHANNEL_1, 400);
-
-	  HAL_Delay(2000);
-
-	  __HAL_TIM_SET_COMPARE( &htim4, TIM_CHANNEL_1, 550);
-
-	  HAL_Delay(2000);
-
-
-	  __HAL_TIM_SET_COMPARE( &htim4, TIM_CHANNEL_1, 700);
-
-	  HAL_Delay(2000);
-
-	  __HAL_TIM_SET_COMPARE( &htim4, TIM_CHANNEL_1, 550);
-
-	  HAL_Delay(2000);
 
 
 	  float pid_value = distance; // Twoja wartość float
