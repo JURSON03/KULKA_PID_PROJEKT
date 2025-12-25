@@ -1,0 +1,2 @@
+../Core/Components/Src/Enkoder.c:14:6:Encoder_Init	1
+../Core/Components/Src/Enkoder.c:30:5:Encoder_GetValue	2

@@ -1,0 +1,58 @@
+PA6 -> czujnik ECHO
+PC8 -> czujnik Trig
+PD12 -> silnik PWM sygnal
+
+
+DLA SG90 (małe serwo):
+1000 -> Lewo serwo (góra)
+600 -> środek serwo (środek)
+350 -> Prawo serwo (dół)
+
+DLA MG996R (duże serwo):
+max wychylenia: 300 - 1300 sygnał;
+xxx -> dół
+800 -> środek 
+xxx -> góra
+
+
+częstotliwość próbkowania: 0.1
+
+
+
+
+void PID_Controller_Init(PID_HandleType* pid_controller){
+
+
+	pid_controller->kp = 1.0;
+	pid_controller->ki = 0.5;
+	pid_controller->kd = 0.09;
+//	pid_controller->N = 8.043;
+
+
+	pid_controller->error = 0;;
+	pid_controller->prev_error = 0;
+//	pid_controller->prev_derivative_output = 0;
+
+	pid_controller->integral_sum = 0;
+
+	pid_controller->PID_p = 0;
+	pid_controller->PID_i = 0;
+	pid_controller->PID_d = 0;
+	pid_controller->PID_total = 0;
+
+	pid_controller->output_limit_min = 350;
+	pid_controller->output_limit_max = 850;		// 1000
+
+	pid_controller->distance_setpoint = 0.16;		// wymuszenie 0.12 [m] = 12 [cm]
+}
+
+
+
+
+
+
+
+
+void PID_Controller_Calculate(HCSR04_Sensor_HandleType* hcsr04_sensor,
+							  SG90_Servo_HandleType* servo,
+							  PID_HandleType* pid_controller){
