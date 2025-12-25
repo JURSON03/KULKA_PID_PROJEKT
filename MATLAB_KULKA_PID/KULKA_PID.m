@@ -13,4 +13,5 @@ r = 0;                  % pozycja pilki
 G_obiekt =  (-m*g*d) / ( L * (J/(R^2)+m) ) / s^2
 licznik = -m * g * d ;
 mianownik = L * (J/(R^2) + m);
-step(G_obiekt)
+
+%step(G_obiekt)
