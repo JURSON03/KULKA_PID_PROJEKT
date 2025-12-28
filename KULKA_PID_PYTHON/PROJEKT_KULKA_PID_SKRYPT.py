@@ -25,17 +25,15 @@ line_err, = ax.plot([], [], 'g:', label='Uchyb [cm]')
 ax.set_ylim(-15, 35)
 ax.set_xlim(0, max_points)
 ax.set_xlabel("Próbki")
-ax.set_ylabel("Wartość [cm]")
+ax.set_ylabel("Położenie [cm]")
 ax.legend(loc='upper right')
 ax.grid(True)
 
 def update_plot(frame):
     try:
-        # Szukaj znaku synchronizacji 'S'
-        header = ser.readline().decode('utf-8').strip()
-        
+        header = ser.readline().decode('utf-8').strip()    
         if header == 'S':
-            # Czytaj 3 kolejne linie
+
             p = float(ser.readline().decode('utf-8').strip())
             s = float(ser.readline().decode('utf-8').strip())
             e = float(ser.readline().decode('utf-8').strip())
@@ -55,8 +53,7 @@ def update_plot(frame):
             print(f"Poz: {p:5.1f} | Ref: {s:5.1f} | Err: {e:5.1f}")
 
     except Exception:
-        pass # Ignoruj błędy pojedynczych ramek
-
+        pass 
     return line_pos, line_set, line_err
 
 atexit.register(lambda: ser.close())
